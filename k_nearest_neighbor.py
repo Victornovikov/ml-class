@@ -160,9 +160,8 @@ class KNearestNeighbor:
             # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
             nearest = np.argsort(dists[i, :])
             # print(self.y_train)
-            label = self.y_train[nearest[:k]]
+            label_candidates = self.y_train[nearest[:k]]
             # print(label)
-            y_pred[i] = int(label)
             # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
             #########################################################################
             # TODO:                                                                 #
@@ -172,7 +171,12 @@ class KNearestNeighbor:
             # label.                                                                #
             #########################################################################
             # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
-            pass
+            
+            from collections import Counter
+            labels_candidates_counted = Counter(label_candidates)
+            # print(labels_candidates_counted)
+            y_pred[i] = next(iter(labels_candidates_counted))
+
             # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
         print(y_pred)
         return y_pred
