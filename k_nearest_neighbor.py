@@ -158,7 +158,11 @@ class KNearestNeighbor:
             # Hint: Look up the function numpy.argsort.                             #
             #########################################################################
             # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
-            pass
+            nearest = np.argsort(dists[i, :])
+            # print(self.y_train)
+            label = self.y_train[nearest[:k]]
+            # print(label)
+            y_pred[i] = int(label)
             # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
             #########################################################################
             # TODO:                                                                 #
@@ -170,5 +174,5 @@ class KNearestNeighbor:
             # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
             pass
             # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
-
+        print(y_pred)
         return y_pred
